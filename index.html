@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f1e7">
+  <meta name="description" content="40 道关于日常的选择，找到一座与你的生活节奏合拍的城市。">
+  <title>你的灵魂老家在哪座城市？｜灵魂旅行局</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="data.js" defer></script>
+  <script src="assets/cities.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="site-header frame">
+    <div class="brand">
+      <span class="compass" aria-hidden="true"></span>
+      <span><strong>灵魂旅行局</strong><small>SOUL TRAVEL CLUB</small></span>
+    </div>
+    <button type="button" class="about-button" id="about-button"><span aria-hidden="true">?</span> 关于测试</button>
+  </header>
+
+  <main id="main" class="frame">
+    <section id="home" class="view" aria-labelledby="home-title">
+      <article class="cover">
+        <div class="cover-copy">
+          <p class="eyebrow"><span class="little-sun" aria-hidden="true">✳</span> 城市人格测试</p>
+          <h1 id="home-title" tabindex="-1">你的灵魂老家<br><span>在哪座城市？</span></h1>
+          <p class="intro">有人在热闹的街巷里充电，有人在一阵晚风里回神。凭直觉做几道关于日常的选择，看看哪座城市和你最合拍。</p>
+          <div class="cover-actions">
+            <button type="button" class="button primary" id="start"><span class="ticket-icon" aria-hidden="true"></span><span id="start-text">领取车票，开始测试</span></button>
+            <button type="button" class="text-button" id="start-over" hidden>从头开始</button>
+          </div>
+        </div>
+        <figure class="cover-visual">
+          <img id="cover-image" src="assets/cover.webp" width="1536" height="1024" alt="暮色下的江南水岸，石拱桥与黛瓦人家映在河面上">
+          <div class="postmark" aria-hidden="true"><span>灵 魂 旅 行 局</span><b>✳</b><small>SOUL MAIL</small></div>
+          <figcaption><span class="caption-mark" aria-hidden="true"></span> 从日常出发 <span class="caption-divider"></span> TO WHERE YOU BELONG</figcaption>
+        </figure>
+      </article>
+      <dl class="boarding" aria-label="测试信息">
+        <div><dt><span class="info-icon" aria-hidden="true">≋</span> 行程</dt><dd>40 道生活选择</dd></div>
+        <div><dt><span class="info-icon" aria-hidden="true">⌖</span> 目的地</dt><dd>14 座城市</dd></div>
+        <div><dt><span class="info-icon" aria-hidden="true">◷</span> 预计用时</dt><dd>约 6 分钟</dd></div>
+      </dl>
+    </section>
+
+    <section id="quiz" class="view" aria-labelledby="question-title" hidden>
+      <div class="quiz-layout">
+        <aside class="journey" aria-label="旅行车票">
+          <div class="journey-photo" role="img" aria-label="暮色下的江南水岸"></div>
+          <div class="journey-copy">
+            <p class="eyebrow"><span class="little-sun" aria-hidden="true">✳</span> 灵魂旅行车票</p>
+            <h2>去和自己<br>合拍的地方</h2>
+            <p>选最像平时的你。每道题都可以回来修改。</p>
+            <div class="ticket-code" aria-hidden="true"></div>
+          </div>
+        </aside>
+        <div class="quiz-card">
+          <div class="progress-label"><span>旅途进度</span><span><strong id="current-number">01</strong><span class="progress-slash"> / </span><span id="total-number">40</span></span></div>
+          <progress id="progress" max="40" value="0" aria-label="已完成题数"></progress>
+          <form id="question-form">
+            <fieldset id="question-content">
+              <legend id="question-title" tabindex="-1"></legend>
+              <div id="choices" class="choices"></div>
+            </fieldset>
+            <div class="quiz-actions">
+              <button type="button" class="button secondary" id="back">返回首页</button>
+              <button type="submit" class="button primary" id="next" disabled>下一题</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="result" class="view result-view" aria-labelledby="result-title" hidden>
+      <div class="result-top">
+        <h2 id="result-title" tabindex="-1">你的旅行明信片已寄达</h2>
+        <button type="button" class="text-button" id="restart">重新测试</button>
+      </div>
+      <div class="result-layout">
+        <div class="result-share">
+          <article class="poster" id="poster" aria-label="结果海报">
+            <div class="poster-head"><span>✳ &nbsp;灵魂旅行局</span><span>SOUL POSTCARD</span></div>
+            <div class="poster-scene">
+              <img id="city-image" alt="">
+              <span id="landmark" class="poster-caption"></span>
+              <span class="arrival-stamp" aria-hidden="true"><span>抵 达</span><b>✳</b></span>
+            </div>
+            <div class="poster-title">
+              <div><p>我的灵魂老家</p><h3 id="city-name"></h3><span id="city-roman"></span></div>
+              <div class="poster-match"><strong id="match-index"></strong><span>趣味匹配指数</span></div>
+            </div>
+            <p class="poster-quote" id="city-quote"></p>
+            <div class="poster-end"><strong id="city-persona"></strong><span>凭直觉抵达</span></div>
+          </article>
+          <button type="button" class="button primary save-button" id="save"><span aria-hidden="true">↓</span> <span id="save-text">保存结果海报</span></button>
+          <p id="save-status" class="save-status" role="status"></p>
+        </div>
+        <div class="result-details">
+          <div class="details-intro">
+            <p class="eyebrow"><span class="little-sun" aria-hidden="true">✳</span> 你的城市人格</p>
+            <h3 id="details-persona"></h3>
+            <ul id="tags" class="tags" aria-label="城市人格标签"></ul>
+          </div>
+          <dl class="details-list">
+            <div><dt>性格特点</dt><dd id="city-traits"></dd></div>
+            <div><dt>匹配理由</dt><dd><p id="city-reason"></p><p class="affinities" id="affinity-block"><strong>你的同频线索</strong> <span id="city-affinities"></span></p></dd></div>
+            <div><dt>理想生活方式</dt><dd id="city-life"></dd></div>
+            <div><dt>隐藏优势</dt><dd id="city-strength"></dd></div>
+          </dl>
+          <div class="partner-card">
+            <div class="partner-icon" aria-hidden="true">⌖</div>
+            <div><p>最适合你的城市搭档</p><h4 id="partner-name"></h4><span id="partner-persona"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <noscript><p class="noscript">请启用 JavaScript 来完成答题和生成海报。</p></noscript>
+  </main>
+
+  <footer class="site-footer frame"><span>灵魂旅行局</span><p>一份供分享的趣味人格测试，结果仅供娱乐。</p></footer>
+
+  <dialog id="about-dialog" aria-labelledby="about-title">
+    <form method="dialog"><button class="dialog-close" type="submit" aria-label="关闭">×</button></form>
+    <p class="eyebrow"><span class="little-sun" aria-hidden="true">✳</span> 灵魂旅行局</p>
+    <h2 id="about-title">关于这趟旅程</h2>
+    <p>40 道题，每题选一项。你在日常里的选择会组合成一份偏好画像，再和 14 座城市的创作画像比对。</p>
+    <p>城市画像来自旅行想象，匹配指数供娱乐。答题和海报生成都在你的浏览器中完成。</p>
+    <form method="dialog"><button class="button primary" type="submit">知道了</button></form>
+  </dialog>
+
+  <dialog id="poster-dialog" aria-labelledby="share-title">
+    <form method="dialog"><button class="dialog-close" type="submit" aria-label="关闭">×</button></form>
+    <h2 id="share-title">保存你的明信片</h2>
+    <p>可长按海报保存到照片，也可以下载 PNG。</p>
+    <img id="poster-preview" alt="可保存的竖版城市结果海报">
+    <a class="button primary" id="download-poster" download>下载 PNG</a>
+  </dialog>
+</body>
+</html>
